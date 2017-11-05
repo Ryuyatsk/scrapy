@@ -125,32 +125,23 @@ class PyjobSpiderSpider(scrapy.Spider):
   
 
     def parse(self, response):
-    	# print(response.text)
-    	# print("----------------------------------------------------")
-    	# names = response.xpath("//h2[@class='list_headline_title']/text()").extract_first()
-    	# print(names)
-    	# category = response.xpath("//a[@class='listing-new']/text()").extract_first()
-    	# print(category)
-    	# price = response.xpath("//*[@id='200cad4c17d1624317c49d5aa8']/div[3]/a/").extract_first()
-    	# print(price)
-    	# for sel in response.css("div.list_content"):
-     #        article = PyjobItem()
-     #        article['category'] = sel.css("div.list_title > a::text").extract_first()
-     #        article['name'] = sel.css("div.list_title > a::attr('href')").extract_first()
-     #        article['price'] = sel.css("div.list_text > a::text").extract_first()
-     #        article['image'] = sel.css("div.list_title > a::attr('href')").extract_first()
-     #        article['url'] = sel.css("div.list_text > a::text").extract_first()
-     #        article['size'] = sel.css("div.list_text > a::text").extract_first()
-     #        article['description'] = sel.css("div.list_text > a::text").extract_first()
-     #        yield article
-     name = response.xpath("//a[@class='name-link']/text()").extract_first().strip()
-     url = response.xpath("//data-monetate-producturl[@class='product-tile']/text()").extract_first().strip()
-     
-     print(name)
+    	# category = response.xpath("//*[@id='main']/div[1]/a[3]/text()]").extract_first()
+    	name = response.xpath("//a[@class='name-link']/text()").extract_first().strip()
+    	price = response.xpath("//div[@class='product-pricing']/span[@class='product-sales-price']/text()").extract_first()
+    	image = response.xpath("//div[@class='product-image']/a/img/@src").extract_first()
+    	url = response.url
+    	# description = response.xpath()
+    	print(name)
+    	print(url)
+    	print(price)
 
-     item = PyjobItem(
-     	name=name
-     	)
-     yield item
+    	item = PyjobItem(
+    		# category=category,
+    		name=name,
+    		image=image,
+    		url=url,
+    		price=price
+    		)
+    	yield item
 
     	

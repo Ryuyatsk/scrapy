@@ -17,13 +17,8 @@ class PyjobItem(scrapy.Item):
     price = scrapy.Field() #価格
     image = scrapy.Field() #写真
     url = scrapy.Field() #URL
-    size = scrapy.Field() #サイズ
+    # size = scrapy.Field() #サイズ
     description = scrapy.Field() #説明
-
-    # グノシー用
-    title = scrapy.Field()
-    subcategory = scrapy.Field()
-
 
    	
 
