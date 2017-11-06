@@ -129,18 +129,20 @@ class PyjobSpiderSpider(scrapy.Spider):
     	name = response.xpath("//a[@class='name-link']/text()").extract_first().strip()
     	price = response.xpath("//div[@class='product-pricing']/span[@class='product-sales-price']/text()").extract_first()
     	image = response.xpath("//div[@class='product-image']/a/img/@src").extract_first()
+    	# description = response.xpath("//div[@class='pdp-section-header']/h2/text()").extract_first()
     	url = response.url
-    	# description = response.xpath()
+
     	print(name)
     	print(url)
     	print(price)
 
     	item = PyjobItem(
-    		# category=category,
+    		#category=category,
     		name=name,
     		image=image,
     		url=url,
     		price=price
+    		# description=description
     		)
     	yield item
 
